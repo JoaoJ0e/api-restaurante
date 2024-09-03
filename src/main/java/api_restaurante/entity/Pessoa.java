@@ -2,6 +2,8 @@ package api_restaurante.entity;
 
 import api_restaurante.enums.SexoEnum;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDate;
@@ -21,6 +23,7 @@ public abstract class Pessoa {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private SexoEnum sexoEnum;
 

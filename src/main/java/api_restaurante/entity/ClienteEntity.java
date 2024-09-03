@@ -27,6 +27,8 @@ public class ClienteEntity extends Pessoa{
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "restaurante_id", nullable = false)
     private RestauranteEntity restaurante;
+    //TODO: LISTA DE RESERVAS
+
 
     //TODO: CRIAR CONSTRUTOR COM DTO
 }

@@ -25,6 +25,7 @@ public class ReservaEntity {
     @Column(nullable = false)
     private Integer qtdPessoas;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private StatusReservaEnum statusReservaEnum;
 
@@ -37,6 +38,8 @@ public class ReservaEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "mesa_id", nullable = false)
     private MesaEntity mesa;
+
+    //TODO: LISTA DE PEDIDOS
 
     //TODO: CONSTRUTOR DTO
 }

@@ -26,6 +26,7 @@ public class RestauranteEntity {
 
     private Integer qtdEstrelasMichelin;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private TipoComidaEnum tipoComidaEnum;
 

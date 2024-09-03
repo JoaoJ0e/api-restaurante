@@ -19,6 +19,7 @@ public class FuncionarioEntity extends Pessoa{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
     private CargoEnum cargoEnum;
 
