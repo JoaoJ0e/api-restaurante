@@ -7,7 +7,14 @@ import java.util.List;
 public interface ClienteService {
 
     ClienteDto addCliente(ClienteDto dto);
+
     ClienteDto updCliente(Long id, ClienteDto dto);
+
     List<ClienteDto> getAllClientes(Long restauranteId);
+
     ClienteDto getClienteById(Long id);
+
+    List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId);
+
+
 }

@@ -1,6 +1,7 @@
 package api_restaurante.service;
 
 import api_restaurante.dto.ReservaDto;
+import api_restaurante.entity.ReservaEntity;
 import api_restaurante.enums.StatusReservaEnum;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface ReservaService {
     ReservaDto updStatusReserva(Long id, StatusReservaEnum statusNovo);
     List<ReservaDto> getAllReservas();
     ReservaDto getReservaById(Long id);
+    ReservaEntity getReservaEntityById(Long id);
 }

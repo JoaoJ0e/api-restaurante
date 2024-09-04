@@ -16,16 +16,16 @@ public class ClienteDto extends PessoaDto {
     private Long id;
     private LocalDate dataCadastro;
     private Long qtdReservas;
-    private BigDecimal qtd_valor_gasto;
-    private Boolean flg_bloqueado;
+    private BigDecimal qtdValorGasto;
+    private Boolean flgBloqueado;
     private Long restauranteId;
 
     public ClienteDto(ClienteEntity entity) {
         this.id = entity.getId();
         this.dataCadastro = entity.getDataCadastro();
         this.qtdReservas = entity.getQtdReservas();
-        this.qtd_valor_gasto = entity.getQtd_valor_gasto();
-        this.flg_bloqueado = entity.getFlg_bloqueado();
+        this.qtdValorGasto = entity.getQtdValorGasto();
+        this.flgBloqueado = entity.getFlgBloqueado();
         this.restauranteId = entity.getRestaurante().getId();
 
         this.nome = entity.getNome();

@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface PedidoService {
 
-    PedidoDto addPedido(PedidoDto dto);
-    List<PedidoDto> getAllPedidos();
+    PedidoDto addPedido(PedidoDto dto, Long reservaId);
+
+    List<PedidoDto> getAllPedidos(Long reservaId);
+
     PedidoDto getPedidoById(Long id);
 }

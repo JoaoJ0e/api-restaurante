@@ -15,7 +15,6 @@ import java.util.Optional;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
-    //TODO: Implementar CRUD
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -47,6 +46,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ClienteDto getClienteById(Long id) {
         return new ClienteDto(findClienteById(id));
+    }
+
+    @Override
+    public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
+        return clienteRepository.findTopClientesByRestauranteIdAndQtdTotalGasto(restauranteId).stream().map(ClienteDto::new).toList();
     }
 
     private ClienteEntity findClienteById(Long id){

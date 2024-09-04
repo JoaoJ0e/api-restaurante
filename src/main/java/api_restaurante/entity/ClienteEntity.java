@@ -29,10 +29,10 @@ public class ClienteEntity extends Pessoa{
     private Long qtdReservas;
 
     @Column(nullable = false)
-    private BigDecimal qtd_valor_gasto;
+    private BigDecimal qtdValorGasto;
 
     @Column(nullable = false)
-    private Boolean flg_bloqueado;
+    private Boolean flgBloqueado;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "restaurante_id", nullable = false)
@@ -44,9 +44,9 @@ public class ClienteEntity extends Pessoa{
     public ClienteEntity(ClienteDto dto, RestauranteEntity restaurante) {
         this.id = dto.getId();
         this.dataCadastro = Objects.nonNull(dto.getDataCadastro()) ? dto.getDataCadastro() : LocalDate.now();
-        this.qtdReservas = dto.getQtdReservas();
-        this.qtd_valor_gasto = dto.getQtd_valor_gasto();
-        this.flg_bloqueado = dto.getFlg_bloqueado();
+        this.qtdReservas = Objects.nonNull(dto.getQtdReservas()) ? dto.getQtdReservas() : 0;
+        this.qtdValorGasto = Objects.nonNull(dto.getQtdValorGasto()) ? dto.getQtdValorGasto() : BigDecimal.valueOf(0);
+        this.flgBloqueado = Objects.nonNull(dto.getFlgBloqueado()) ? dto.getFlgBloqueado() : false;
         this.restaurante = restaurante;
 
         this.nome = dto.getNome();
