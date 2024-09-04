@@ -1,5 +1,6 @@
 package api_restaurante.entity;
 
+import api_restaurante.dto.RestauranteDto;
 import api_restaurante.enums.TipoComidaEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -39,7 +40,21 @@ public class RestauranteEntity {
     @OneToMany(mappedBy = "restaurante", fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     private List<ClienteEntity> clientes;
 
+    public RestauranteEntity(RestauranteDto dto) {
+        this.id = dto.getId();
+        this.nome = dto.getNome();
+        this.cnpj = dto.getCnpj();
+        this.qtdEstrelasMichelin = dto.getQtdEstrelasMichelin();
+        this.tipoComidaEnum = dto.getTipoComidaEnum();
+    }
 
-    //TODO: CRIAR CONSTRUTOR COM DTO
+    public RestauranteEntity atualizaRestaurante(RestauranteDto restauranteAtualizado) {
+        this.nome = restauranteAtualizado.getNome();
+        this.cnpj = restauranteAtualizado.getCnpj();
+        this.qtdEstrelasMichelin = restauranteAtualizado.getQtdEstrelasMichelin();
+        this.tipoComidaEnum = restauranteAtualizado.getTipoComidaEnum();
+
+        return this;
+    }
 
 }

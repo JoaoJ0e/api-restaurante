@@ -1,5 +1,6 @@
 package api_restaurante.entity;
 
+import api_restaurante.dto.ReservaDto;
 import api_restaurante.enums.StatusReservaEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,7 +41,22 @@ public class ReservaEntity {
     @JoinColumn(name = "mesa_id", nullable = false)
     private MesaEntity mesa;
 
-    //TODO: LISTA DE PEDIDOS
+    @OneToMany(mappedBy = "reserva", fetch = FetchType.LAZY,cascade = CascadeType.DETACH)
+    private List<PedidoEntity> pedidos;
 
-    //TODO: CONSTRUTOR DTO
+    public ReservaEntity(ReservaDto dto, ClienteEntity cliente, MesaEntity mesa) {
+        this.id = dto.getId();
+        this.dataReserva = dto.getDataReserva();
+        this.qtdPessoas = dto.getQtdPessoas();
+        this.statusReservaEnum = dto.getStatusReservaEnum();
+        this.observacao = dto.getObservacao();
+        this.cliente = cliente;
+        this.mesa = mesa;
+    }
+
+    public ReservaEntity atualizaStatusReserva(StatusReservaEnum statusNovo) {
+        this.statusReservaEnum = statusNovo;
+
+        return this;
+    }
 }

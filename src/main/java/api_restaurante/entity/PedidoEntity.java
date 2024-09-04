@@ -1,5 +1,6 @@
 package api_restaurante.entity;
 
+import api_restaurante.dto.PedidoDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class PedidoEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String nomePrato;
+    private String descricao;
 
     @Column(nullable = false)
     private BigDecimal valor;
@@ -27,5 +28,12 @@ public class PedidoEntity {
     @JoinColumn(name = "reserva_id", nullable = false)
     private ReservaEntity reserva;
 
-    //TODO: CONSTRUTOR DTO
+    public PedidoEntity(PedidoDto dto, ReservaEntity reserva) {
+        this.id = dto.getId();
+        this.descricao = dto.getDescricao();
+        this.valor = dto.getValor();
+        this.reserva = reserva;
+    }
+
+
 }
