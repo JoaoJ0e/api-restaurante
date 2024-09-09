@@ -8,7 +8,7 @@ public interface MesaService {
 
     MesaDto addMesa(MesaDto dto);
     MesaDto updMesa(Long id, MesaDto dto);
-    List<MesaDto> getAllMesas();
+    List<MesaDto> getAllMesas(Long restauranteId);
     MesaDto getMesaById(Long id);
     
 }

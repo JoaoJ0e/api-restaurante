@@ -8,13 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<ClienteEntity, Long> {
+public interface ClienteRepository extends JpaRepository<ClienteEntity, Long>, ClienteRepositoryCustom {
     List<ClienteEntity> findAllByRestauranteId(Long restauranteId);
-
-    @Query("SELECT c " +
-            "FROM ClienteEntity c " +
-            "WHERE c.restaurante.id = :restauranteId " +
-            "ORDER BY c.qtdTotalGasto DESC")
-    List<ClienteEntity> findTopClientesByRestauranteIdAndQtdTotalGasto(Long restauranteId);
-
 }

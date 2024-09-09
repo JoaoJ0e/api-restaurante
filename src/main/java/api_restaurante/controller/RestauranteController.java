@@ -11,8 +11,6 @@ import java.util.List;
 @RequestMapping("/restaurante")
 public class RestauranteController {
 
-    //TODO: TESTAR
-
     @Autowired
     private RestauranteService restauranteService;
 

@@ -32,7 +32,7 @@ public class FuncionarioEntity extends Pessoa{
     private BigDecimal salario;
 
     @Column(nullable = false)
-    private BigDecimal cargaHoraria;
+    private Integer cargaHoraria;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
     @JoinColumn(name = "restaurante_id", nullable = false)
@@ -42,6 +42,7 @@ public class FuncionarioEntity extends Pessoa{
         this.id = dto.getId();
         this.cargoEnum = dto.getCargoEnum();
         this.dataAdmissao = Objects.nonNull(dto.getDataAdmissao()) ? dto.getDataAdmissao() : LocalDate.now();
+        this.salario = dto.getSalario();
         this.cargaHoraria = dto.getCargaHoraria();
         this.restaurante = restaurante;
 

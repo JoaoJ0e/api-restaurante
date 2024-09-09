@@ -11,8 +11,6 @@ import java.util.List;
 @RequestMapping("/cliente")
 public class ClienteController {
 
-    //TODO: TESTAR
-
     @Autowired
     private ClienteService clienteService;
 
@@ -26,7 +24,7 @@ public class ClienteController {
         return clienteService.updCliente(id, dto);
     }
 
-    @GetMapping("/{restauranteId}")
+    @GetMapping("/restaurante/{restauranteId}")
     public List<ClienteDto> getAllClientes(@PathVariable Long restauranteId) {
         return clienteService.getAllClientes(restauranteId);
     }
@@ -36,8 +34,8 @@ public class ClienteController {
         return clienteService.getClienteById(id);
     }
 
-    @GetMapping("/top")
-    public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
+    @GetMapping("/restaurante/{restauranteId}/top")
+    public List<ClienteDto> getAllClientesOrderByQtdValorGasto(@PathVariable Long restauranteId) {
         return clienteService.getAllClientesOrderByQtdValorGasto(restauranteId);
     }
 

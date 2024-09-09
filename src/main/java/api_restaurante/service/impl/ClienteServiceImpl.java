@@ -50,7 +50,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
-        return clienteRepository.findTopClientesByRestauranteIdAndQtdTotalGasto(restauranteId).stream().map(ClienteDto::new).toList();
+       return clienteRepository.getClientesByRestauranteIdOrderByValorGasto(restauranteId);
     }
 
     private ClienteEntity findClienteById(Long id){

@@ -11,8 +11,6 @@ import java.util.List;
 @RequestMapping("/mesa")
 public class MesaController {
 
-    //TODO: TESTAR
-
     @Autowired
     private MesaService mesaService;
 
@@ -26,10 +24,11 @@ public class MesaController {
         return mesaService.updMesa(id, dto);
     }
 
-    @GetMapping
-    public List<MesaDto> getAllMesas() {
-        return mesaService.getAllMesas();
+    @GetMapping("/restaurante/{restauranteId}")
+    public List<MesaDto> getAllMesas(@PathVariable Long restauranteId) {
+        return mesaService.getAllMesas(restauranteId);
     }
+
     @GetMapping("/{id}")
     public MesaDto getMesaById(@PathVariable Long id) {
         return mesaService.getMesaById(id);

@@ -1,12 +1,10 @@
 package api_restaurante.service.impl;
 
 import api_restaurante.dto.MesaDto;
-import api_restaurante.dto.RestauranteDto;
 import api_restaurante.entity.MesaEntity;
 import api_restaurante.entity.RestauranteEntity;
 import api_restaurante.exceptions.IdNotFoundException;
 import api_restaurante.repository.MesaRepository;
-import api_restaurante.repository.RestauranteRepository;
 import api_restaurante.service.MesaService;
 import api_restaurante.service.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +42,8 @@ public class MesaServiceImpl implements MesaService {
     }
 
     @Override
-    public List<MesaDto> getAllMesas() {
-        return mesaRepository.findAll().stream().map(MesaDto::new).toList();
+    public List<MesaDto> getAllMesas(Long restauranteId) { //TODO: fix this shit, for goodness sake
+        return mesaRepository.findAllByRestauranteId(restauranteId).stream().map(MesaDto::new).toList();
     }
 
     @Override
