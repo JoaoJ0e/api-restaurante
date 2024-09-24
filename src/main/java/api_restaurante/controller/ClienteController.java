@@ -11,8 +11,6 @@ import java.util.List;
 @RequestMapping("/cliente")
 public class ClienteController {
 
-    //TODO: TESTAR
-
     @Autowired
     private ClienteService clienteService;
 

@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/pedido")
 public class PedidoController {
-    // TODO: TESTAR TODOS OS CONTROLLERS
     @Autowired
     private PedidoService pedidoService;
 

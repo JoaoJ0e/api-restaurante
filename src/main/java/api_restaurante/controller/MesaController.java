@@ -11,8 +11,6 @@ import java.util.List;
 @RequestMapping("/mesa")
 public class MesaController {
 
-    //TODO: TESTAR
-
     @Autowired
     private MesaService mesaService;
 
