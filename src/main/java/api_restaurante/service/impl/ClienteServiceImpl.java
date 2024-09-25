@@ -8,6 +8,8 @@ import api_restaurante.repository.ClienteRepository;
 import api_restaurante.service.ClienteService;
 import api_restaurante.service.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,8 +41,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteDto> getAllClientes(Long restauranteId) {
-        return clienteRepository.findAllByRestauranteId(restauranteId).stream().map(ClienteDto::new).toList();
+    public Page<ClienteDto> getAllClientes(Pageable pageable, Long restauranteId) {
+        return clienteRepository.findAllByRestauranteId(pageable, restauranteId);
     }
 
     @Override
@@ -49,8 +51,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
-       return clienteRepository.getClientesByRestauranteIdOrderByValorGasto(restauranteId);
+    public Page<ClienteDto> getAllClientesOrderByQtdValorGasto(Pageable pageable, Long restauranteId) {
+       return clienteRepository.getClientesByRestauranteIdOrderByValorGasto(pageable, restauranteId);
     }
 
     private ClienteEntity findClienteById(Long id){

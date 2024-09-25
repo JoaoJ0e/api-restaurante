@@ -1,8 +1,8 @@
 package api_restaurante.service;
 
 import api_restaurante.dto.ClienteDto;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ClienteService {
 
@@ -10,11 +10,11 @@ public interface ClienteService {
 
     ClienteDto updCliente(Long id, ClienteDto dto);
 
-    List<ClienteDto> getAllClientes(Long restauranteId);
+    Page<ClienteDto> getAllClientes(Pageable pageable, Long restauranteId);
 
     ClienteDto getClienteById(Long id);
 
-    List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId);
+    Page<ClienteDto> getAllClientesOrderByQtdValorGasto(Pageable pageable, Long restauranteId);
 
 
 }
