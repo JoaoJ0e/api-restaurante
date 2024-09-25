@@ -7,4 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface ClienteRepositoryCustom {
 
     Page<ClienteDto> getClientesByRestauranteIdOrderByValorGasto(Pageable pageable, Long restauranteId);
+
+    Page<ClienteDto> getClientesComSeuMaiorPedido(Pageable pageable, Long restauranteId);
 }

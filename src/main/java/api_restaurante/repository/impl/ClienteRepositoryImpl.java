@@ -34,4 +34,12 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 
         return new PageImpl<>(query.fetch(), pageable, query.fetchCount());
     }
+
+    @Override
+    public Page<ClienteDto> getClientesComSeuMaiorPedido(Pageable pageable, Long restauranteId) {
+        var query = new JPAQuery<ClienteDto>(em);
+
+        //TODO: Terminar
+        return null;
+    }
 }
