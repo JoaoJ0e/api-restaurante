@@ -3,6 +3,8 @@ package api_restaurante.controller;
 import api_restaurante.dto.ClienteDto;
 import api_restaurante.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,9 +26,12 @@ public class ClienteController {
         return clienteService.updCliente(id, dto);
     }
 
-    @GetMapping("/{restauranteId}")
-    public List<ClienteDto> getAllClientes(@PathVariable Long restauranteId) {
-        return clienteService.getAllClientes(restauranteId);
+    @GetMapping("/restaurante/{restauranteId}")
+    public Page<ClienteDto> getAllClientes(@PathVariable Long restauranteId,
+                                           @RequestParam(defaultValue = "0", required = false) Integer page,
+                                           @RequestParam(defaultValue = "1", required = false) Integer size
+                                            ){
+        return clienteService.getAllClientes(Pageable.ofSize(size).withPage(page),restauranteId);
     }
 
     @GetMapping("/{id}")
@@ -34,10 +39,12 @@ public class ClienteController {
         return clienteService.getClienteById(id);
     }
 
-    @GetMapping("/top")
-    public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
-        return clienteService.getAllClientesOrderByQtdValorGasto(restauranteId);
+    @GetMapping("/restaurante/{restauranteId}/top")
+    public Page<ClienteDto> getAllClientesOrderByQtdValorGasto(@PathVariable Long restauranteId,
+                                                               @RequestParam(defaultValue = "0", required = false) Integer page,
+                                                               @RequestParam(defaultValue = "1", required = false) Integer size
+                                                               ) {
+        return clienteService.getAllClientesOrderByQtdValorGasto(Pageable.ofSize(size).withPage(page), restauranteId);
     }
-
 
 }

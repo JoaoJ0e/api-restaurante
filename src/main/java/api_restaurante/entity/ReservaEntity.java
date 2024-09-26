@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,7 +49,7 @@ public class ReservaEntity {
         this.id = dto.getId();
         this.dataReserva = dto.getDataReserva();
         this.qtdPessoas = dto.getQtdPessoas();
-        this.statusReservaEnum = dto.getStatusReservaEnum();
+        this.statusReservaEnum = Optional.ofNullable(dto.getStatusReservaEnum()).isPresent() ? dto.getStatusReservaEnum() : StatusReservaEnum.AGENDADA;
         this.observacao = dto.getObservacao();
         this.cliente = cliente;
         this.mesa = mesa;

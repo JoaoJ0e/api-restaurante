@@ -17,13 +17,14 @@ public class FuncionarioDto extends PessoaDto {
     private CargoEnum cargoEnum;
     private LocalDate dataAdmissao;
     private BigDecimal salario;
-    private BigDecimal cargaHoraria;
+    private Integer cargaHoraria;
     private Long restauranteId;
 
     public FuncionarioDto(FuncionarioEntity entity) {
         this.id = entity.getId();
         this.cargoEnum = entity.getCargoEnum();
         this.dataAdmissao = entity.getDataAdmissao();
+        this.salario = entity.getSalario();
         this.cargaHoraria = entity.getCargaHoraria();
         this.restauranteId = entity.getRestaurante().getId();
 

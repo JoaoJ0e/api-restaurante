@@ -11,11 +11,13 @@ import java.util.List;
 @RequestMapping("/funcionario")
 public class FuncionarioController {
 
+
+    //TODO: consertar. Não conseguimos cadastrar funcionarios porque o sistema não quer
     @Autowired
     private FuncionarioService funcionarioService;
 
     @PostMapping
-    public FuncionarioDto addFuncionario(FuncionarioDto dto) {
+    public FuncionarioDto addFuncionario(@RequestBody FuncionarioDto dto) {
         return funcionarioService.addFuncionario(dto);
     }
 

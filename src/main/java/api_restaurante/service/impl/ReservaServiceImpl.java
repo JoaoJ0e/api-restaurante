@@ -2,7 +2,6 @@ package api_restaurante.service.impl;
 
 import api_restaurante.dto.ClienteDto;
 import api_restaurante.dto.ReservaDto;
-import api_restaurante.dto.RestauranteDto;
 import api_restaurante.entity.ClienteEntity;
 import api_restaurante.entity.MesaEntity;
 import api_restaurante.entity.ReservaEntity;
@@ -10,15 +9,15 @@ import api_restaurante.entity.RestauranteEntity;
 import api_restaurante.enums.StatusReservaEnum;
 import api_restaurante.exceptions.IdNotFoundException;
 import api_restaurante.repository.ReservaRepository;
-import api_restaurante.repository.RestauranteRepository;
 import api_restaurante.service.ClienteService;
 import api_restaurante.service.MesaService;
 import api_restaurante.service.ReservaService;
 import api_restaurante.service.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -56,8 +55,8 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
-    public List<ReservaDto> getAllReservas() {
-        return reservaRepository.findAll().stream().map(ReservaDto::new).toList();
+    public Page<ReservaDto> getAllReservas(Pageable pageable, Long restauranteId) {
+        return reservaRepository.getByRestauranteId(pageable, restauranteId);
     }
 
     @Override

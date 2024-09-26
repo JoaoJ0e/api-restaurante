@@ -41,8 +41,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteDto> getAllClientes(Long restauranteId) {
-        return clienteRepository.findAllByRestauranteId(restauranteId).stream().map(ClienteDto::new).toList();
+    public Page<ClienteDto> getAllClientes(Pageable pageable, Long restauranteId) {
+        return clienteRepository.findAllByRestauranteId(pageable, restauranteId);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
-        return clienteRepository.findTopClientesByRestauranteIdAndQtdTotalGasto(restauranteId).stream().map(ClienteDto::new).toList();
+    public Page<ClienteDto> getAllClientesOrderByQtdValorGasto(Pageable pageable, Long restauranteId) {
+       return clienteRepository.getClientesByRestauranteIdOrderByValorGasto(pageable, restauranteId);
     }
 
     @Override

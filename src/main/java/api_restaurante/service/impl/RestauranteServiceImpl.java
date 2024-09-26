@@ -43,7 +43,8 @@ public class RestauranteServiceImpl implements RestauranteService {
         return new RestauranteDto(findRestauranteById(id));
     }
 
-    private RestauranteEntity findRestauranteById(Long id){
+    @Override
+    public RestauranteEntity findRestauranteById(Long id){
         Optional<RestauranteEntity> restauranteEntity = restauranteRepository.findById(id);
 
         if (restauranteEntity.isEmpty()) {

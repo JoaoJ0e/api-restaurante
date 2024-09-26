@@ -22,11 +22,12 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     private RestauranteService restauranteService;
     @Override
     public FuncionarioDto addFuncionario(FuncionarioDto dto) {
+        // Não funciona por algum motivo além da compreensão humana
+        // por enquanto, não cadastre funcionários, pois eles não servem para nada (no sistema)
+        RestauranteEntity restauranteEntity = restauranteService.findRestauranteById(dto.getRestauranteId());
 
-        RestauranteEntity restauranteEntity = new RestauranteEntity(restauranteService.getRestauranteById(dto.getRestauranteId()));
-
-        FuncionarioEntity FuncionarioEntity = new FuncionarioEntity(dto, restauranteEntity);
-        return new FuncionarioDto(funcionarioRepository.save(FuncionarioEntity));
+        FuncionarioEntity funcionarioEntity = new FuncionarioEntity(dto, restauranteEntity);
+        return new FuncionarioDto(funcionarioRepository.save(funcionarioEntity));
     }
 
     @Override
