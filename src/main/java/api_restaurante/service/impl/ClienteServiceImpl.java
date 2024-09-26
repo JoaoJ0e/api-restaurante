@@ -8,6 +8,8 @@ import api_restaurante.repository.ClienteRepository;
 import api_restaurante.service.ClienteService;
 import api_restaurante.service.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +53,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<ClienteDto> getAllClientesOrderByQtdValorGasto(Long restauranteId) {
         return clienteRepository.findTopClientesByRestauranteIdAndQtdTotalGasto(restauranteId).stream().map(ClienteDto::new).toList();
+    }
+
+    @Override
+    public Page<ClienteDto> getClientesComSeuMaiorPedido(Pageable pageable, Long restauranteId) {
+        return null;
     }
 
     private ClienteEntity findClienteById(Long id){

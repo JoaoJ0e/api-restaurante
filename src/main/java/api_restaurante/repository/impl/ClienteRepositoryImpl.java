@@ -15,5 +15,6 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
     @Override
     public Page<ClienteDto> getClientesComSeuMaiorPedido(Pageable pageable, Long restauranteId) {
 
+        return null;
     }
 }
