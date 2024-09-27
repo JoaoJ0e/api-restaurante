@@ -10,11 +10,13 @@ public interface ClienteService {
 
     ClienteDto updCliente(Long id, ClienteDto dto);
 
+    void deleteCliente(Long id);
+
     Page<ClienteDto> getAllClientes(Pageable pageable, Long restauranteId);
 
     ClienteDto getClienteById(Long id);
 
     Page<ClienteDto> getAllClientesOrderByQtdValorGasto(Pageable pageable, Long restauranteId);
 
-
+    Page<ClienteDto> getClientesComSeuMaiorPedido(Pageable pageable, Long restauranteId);
 }

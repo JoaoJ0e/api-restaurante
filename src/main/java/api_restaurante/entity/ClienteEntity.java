@@ -59,6 +59,7 @@ public class ClienteEntity extends Pessoa{
     public ClienteEntity atualizaCliente(ClienteDto clienteAtualizado) {
         this.nome = clienteAtualizado.getNome();
         this.sobrenome = clienteAtualizado.getSobrenome();
+        this.cpf = clienteAtualizado.getCpf();
         this.dataNascimento = clienteAtualizado.getDataNascimento();
         this.sexoEnum = clienteAtualizado.getSexoEnum();
         this.telefone = clienteAtualizado.getTelefone();

@@ -23,6 +23,18 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
     final QRestauranteEntity restaurante = QRestauranteEntity.restauranteEntity;
 
     @Override
+    public Page<ClienteDto> getAllByRestauranteId(Pageable pageable, Long restauranteId) {
+        var query = new JPAQuery<ClienteDto>(em);
+
+        query.select(Projections.constructor(ClienteDto.class, cliente))
+                .from(restaurante)
+                .innerJoin(restaurante.clientes, cliente)
+                .where(restaurante.id.eq(restauranteId));
+
+        return new PageImpl<>(query.fetch(), pageable, query.fetchCount());
+    }
+
+    @Override
     public Page<ClienteDto> getClientesByRestauranteIdOrderByValorGasto(Pageable pageable, Long restauranteId) {
         var query = new JPAQuery<ClienteDto>(em);
 

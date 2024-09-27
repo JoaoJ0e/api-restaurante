@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/clientes")
 public class ClienteController {
 
     @Autowired
@@ -25,6 +25,12 @@ public class ClienteController {
     public ClienteDto updCliente(@PathVariable Long id, @RequestBody ClienteDto dto) {
         return clienteService.updCliente(id, dto);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteCliente(@PathVariable Long id) {
+        clienteService.deleteCliente(id);
+    }
+
 
     @GetMapping("/restaurante/{restauranteId}")
     public Page<ClienteDto> getAllClientes(@PathVariable Long restauranteId,

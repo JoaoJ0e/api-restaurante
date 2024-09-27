@@ -12,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,8 +40,13 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public void deleteCliente(Long id) {
+        clienteRepository.deleteById(id);
+    }
+
+    @Override
     public Page<ClienteDto> getAllClientes(Pageable pageable, Long restauranteId) {
-        return clienteRepository.findAllByRestauranteId(pageable, restauranteId);
+        return clienteRepository.getAllByRestauranteId(pageable, restauranteId);
     }
 
     @Override
